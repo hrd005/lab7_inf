@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+message Day {
+    optional string name = 1;
+
+    message Class {
+
+        enum Week {
+            ODD = 0;
+            EVEN = 1;
+        }
+
+        message Position {
+            optional string time = 1;
+            optional Week week = 2;
+        }
+
+        message Place {
+            optional string auditory = 1;
+            optional string address = 2;
+        }
+
+        enum ClassType {
+            LECTION = 0;
+            LABORATORY = 1;
+            PRACTICAL = 2;
+        }
+
+        message ClassDescription {
+            optional string subject = 1;
+            optional ClassType type = 2;
+            optional string lector = 3;
+        }
+
+        optional Position position = 1;
+        optional Place place = 2;
+        optional ClassDescription _class = 3;
+        optional string format = 4;
+    }
+
+    repeated Class classes = 2;
+}
+
+message Shedule {
+    repeated Day days = 1;
+}
